@@ -52,8 +52,8 @@ const Header = ({ cartCount = 0 }) => {
               <NavLink className="nav-link" to="/products" end>
                 Produtos
               </NavLink>
-              <a className="nav-link" href="/about">Quem Somos</a>
-              <a className="nav-link" href="/contact">Contato</a>
+              <NavLink className="nav-link" to="/about">Quem Somos</NavLink>
+              <NavLink className="nav-link" to="/contact">Contato</NavLink>
             </div>
             <div className="d-flex gap-3 ms-auto text-end align-items-center">
               <span className="navbar-text position-relative">
