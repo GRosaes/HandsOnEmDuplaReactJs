@@ -10,12 +10,7 @@ export default defineConfig({
   base: '/HandsOnEmDuplaReactJs/',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined,
-      },
-    },
+    assetsDir: 'assets'
   },
   plugins: [react()],
   resolve: {

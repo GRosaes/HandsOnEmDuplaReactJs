@@ -24,7 +24,6 @@ function App() {
   // Função para adicionar ao carrinho
   const handleAddToCart = (product) => {
     setCartItemCount(prevCount => prevCount + 1);
-    // Mostrar notificação
     toast.success(`${product.title} adicionado ao carrinho!`, {
       icon: '🛒',
       duration: 2000,
@@ -100,8 +99,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-
-        {/* Componente Toaster para mostrar notificações */}
         <Toaster position="top-right" />
       </div>
     </HashRouter>
