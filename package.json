@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://20221si019.github.io/HandsOnEmDuplaReactJs",
+  "homepage": "https://grosaes.github.io/HandsOnEmDuplaReactJs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
