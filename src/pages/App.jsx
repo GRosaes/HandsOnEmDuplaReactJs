@@ -32,7 +32,7 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/HandsOnEmDuplaReactJs">
       <div className="d-flex flex-column min-vh-100">
         <Header cartCount={cartItemCount} />
         <main className="container my-4 flex-grow-1">
