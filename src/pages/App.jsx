@@ -8,6 +8,7 @@ import HomePage from '@pages/HomePage';
 import ProductsPage from '@pages/ProductsPage';
 import AdminCreateProductPage from '@pages/admin/AdminCreateProductPage';
 import AdminUsersPage from '@pages/admin/AdminUsersPage';
+import AdminCategoriesPage from '@pages/admin/AdminCategoriesPage';
 import AdminRoute from '@components/AdminRoute';
 import ProtectedRoute from '@components/ProtectedRoute';
 import LoginPage from '@pages/auth/LoginPage';
@@ -87,6 +88,13 @@ function App() {
               element={
                 <AdminRoute>
                   <AdminUsersPage />
+                </AdminRoute>
+              } />
+            <Route            
+              path="/admin/categories"
+              element={
+                <AdminRoute>
+                  <AdminCategoriesPage />
                 </AdminRoute>
               } />
           </Routes>

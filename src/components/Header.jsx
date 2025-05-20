@@ -74,6 +74,7 @@ const Header = ({ cartCount = 0 }) => {
                     {isAdmin && (
                       <>
                         <li><Link className="dropdown-item" to="/admin/users">Usuários</Link></li>
+                        <li><Link className="dropdown-item" to="/admin/categories">Categorias</Link></li>
                         <li><Link className="dropdown-item" to="/admin/products">Produtos</Link></li>
                         <li><hr className="dropdown-divider" /></li>
                       </>

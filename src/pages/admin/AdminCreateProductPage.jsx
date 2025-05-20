@@ -1,9 +1,10 @@
 // src/pages/admin/AdminCreateProductPage.jsx
 import { useState, useEffect, useRef } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient, useQuery } from '@tanstack/react-query';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import productService from '@services/productService';
+import categoryService from '@services/categoryService';
 
 const AdminCreateProductPage = () => {
     const navigate = useNavigate();
@@ -15,12 +16,19 @@ const AdminCreateProductPage = () => {
         title: '',
         description: '',
         price: '',
+        category_id: '',
         image_file: null,
         image_preview: '',
         image_url: ''
     });
 
     const [errors, setErrors] = useState({});
+
+    // Buscar categorias
+    const { data: categories } = useQuery({
+        queryKey: ['categories'],
+        queryFn: categoryService.getCategories
+    });
 
     // Se for um produto para editar, inicializa o estado com os dados do produto
     useEffect(() => {
@@ -29,6 +37,7 @@ const AdminCreateProductPage = () => {
                 title: productToEdit.title,
                 description: productToEdit.description,
                 price: productToEdit.price,
+                category_id: productToEdit.category_id,
                 image_url: productToEdit.image_url
             });
         }
@@ -87,6 +96,9 @@ const AdminCreateProductPage = () => {
         } else if (isNaN(Number(product.price)) || Number(product.price) <= 0) {
             newErrors.price = 'O preço deve ser um número positivo';
         }
+        if (!product.category_id) {
+            newErrors.category_id = 'A categoria é obrigatória';
+        }
         if (!product.image_file && !product.image_url) {
             newErrors.image_file = 'Selecione uma foto';
         }
@@ -138,6 +150,25 @@ const AdminCreateProductPage = () => {
                                     onChange={handleChange} autoFocus />
                                 {errors.title && <div className="invalid-feedback">{errors.title}</div>}
                             </div>
+                            
+                            <div className="mb-3">
+                                <label htmlFor="category_id" className="form-label">Categoria</label>
+                                <select
+                                    className={`form-select ${errors.category_id ? 'is-invalid' : ''}`}
+                                    id="category_id"
+                                    name="category_id"
+                                    value={product.category_id}
+                                    onChange={handleChange}>
+                                    <option value="">Selecione uma categoria</option>
+                                    {categories?.map(category => (
+                                        <option key={category.id} value={category.id}>
+                                            {category.name}
+                                        </option>
+                                    ))}
+                                </select>
+                                {errors.category_id && <div className="invalid-feedback">{errors.category_id}</div>}
+                            </div>
+
                             <div className="mb-3">
                                 <label htmlFor="description" className="form-label">Descrição</label>
                                 <textarea

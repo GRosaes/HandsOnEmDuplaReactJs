@@ -28,6 +28,7 @@ const CardsGrid = ({ title, items, cols = 4, onAddToCart, currentPage, totalPage
             title={item.title}
             description={item.description}
             price={item.price}
+            category={item.category}
             link={`/item/${item.id}`}
             onAddToCartClick={() => onAddToCart(item)} />
         ))}
